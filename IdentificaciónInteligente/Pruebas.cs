@@ -32,7 +32,7 @@ namespace IdentificaciónInteligente
             img[0, 8] = 0; img[1, 8] = 0; img[2, 8] = 0; img[3, 8] = 0; img[4, 8] = 0; img[5, 8] = 0; img[6, 8] = 0; img[7, 8] = 0; img[8, 8] = 0; img[9, 8] = 0;
             img[0, 9] = 0; img[1, 9] = 0; img[2, 9] = 0; img[3, 9] = 0; img[4, 9] = 0; img[5, 9] = 0; img[6, 9] = 0; img[7, 9] = 0; img[8, 9] = 0; img[9, 9] = 0;
 
-            AE ae = new AE(img,2,5);
+            AE ae = new AE(img,2,10);
             do
             {
                 ae.AzarIndividuo();
@@ -40,6 +40,7 @@ namespace IdentificaciónInteligente
            
             ae.BuscarDistancia();
             ae.GenerarPoblacion();
+            ae.Evolucionar(0,ae.IND.Count);
         }
 
         private bool ObtenerValidez(List<Individuo> individuo) {

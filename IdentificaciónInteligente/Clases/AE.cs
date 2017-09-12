@@ -54,46 +54,55 @@ namespace IdentificaciónInteligente.Clases
         //Metodo para buscar la distancia mas corta entre dos puntos
         public void BuscarDistancia()
         {
-            bool validar = false;
-            double distancia = 1000, distancia_calculada = 0;
-            int indice = 0;
             for (int i = 0; i < IND.Count; i++)
             {
-                
-
-                if (distancia == 1000)
-                {
-                    distancia = 0;
-                }
-
-                IND[i].Distancia = distancia;
-                IND[indice].Proceso = false;
-
-                if (validar)
-                {
-                    IND[indice].Proceso = true;
-                    IND[indice].Distancia = distancia;
-                    validar = false;
-                }
-                distancia = 1000;
+                IND[i].Distancia = BuscarDistancia(i);
+                IND[i].Proceso = false;
             }
         }
 
+        //Metodo para hallar la distancia buscada entre dos puntos.
         public double BuscarDistancia(int individuo)
         {
-            if (IND[i].Proceso == false)
-            {
+            double DistanciaCal=0, DistanciaCa_Ant = 100, distancia=0;
                 for (int j = 0; j < IND.Count; j++)
                 {
-                    distancia_calculada = (Distancia(IND[individuo], IND[j]) - UMBRAL) * IND[j].Validez;
-                    if (distancia > distancia_calculada && distancia_calculada > 0)
+                    DistanciaCal = DistanciaCalculada(IND[individuo], IND[j]);
+                    if (DistanciaCa_Ant > DistanciaCal && DistanciaCal > 0)
                     {
-                        validar = true;
+                        DistanciaCa_Ant = DistanciaCal;
                         distancia = Distancia(IND[individuo], IND[j]);
-                        indice = j;
                     }
                 }
+            return distancia;
+        }
+
+        //Metodo para hallar la distancia buscada entre dos puntos.
+        public double BuscarDistancia(int x,int y)
+        {
+            double DistanciaCal = 0, DistanciaCa_Ant = 100, distancia = 0;
+            for (int j = 0; j < IND.Count; j++)
+            {
+                DistanciaCal = DistanciaCalculada(x,y, IND[j]);
+                if (DistanciaCa_Ant > DistanciaCal && DistanciaCal > 0)
+                {
+                    DistanciaCa_Ant = DistanciaCal;
+                    distancia = Distancia(x,y, IND[j]);
+                }
             }
+            return distancia;
+        }
+
+        //Metodo para hallar la distancia calculada 
+        public double DistanciaCalculada(Individuo a, Individuo b)
+        {
+            return (Distancia(a, b) - UMBRAL) * b.Validez;
+        }
+
+        //Metodo para hallar la distancia calculada 
+        public double DistanciaCalculada(int x, int y, Individuo b)
+        {
+            return (Distancia(x,y,b)-UMBRAL)*b.Validez;
         }
         //Algoritmo Evolutivo
 
@@ -128,7 +137,7 @@ namespace IdentificaciónInteligente.Clases
                 //Ciclo de mutuación
                 for (int i = 0; i < FactMutacion; i++)
                 {
-
+                    Mutacion(7);
                 }
 
                 PromValidez[1] = PromValidez[0];
@@ -154,14 +163,19 @@ namespace IdentificaciónInteligente.Clases
             int NX = ProcesarMutuacion(PadreX);
             int NY = ProcesarMutuacion(PadreY);
 
-
-            //if (min(Genotipo[sel, 8], Genotipo[BinX, 8]))
-            //{
-            //    Genotipo[sel, 1] = Genotipo[BinX, 1]; Genotipo[sel, 2] = Genotipo[BinX, 2]; Genotipo[sel, 3] = Genotipo[BinX, 3]; Genotipo[sel, 4] = Genotipo[BinX, 4]; Genotipo[sel, 5] = Genotipo[BinX, 5]; Genotipo[sel, 6] = Genotipo[BinX, 6];
-            //    Genotipo[sel, 8] = Genotipo[BinX, 8];
-            //}
-
-            //Genotipo[sel, 0] = 1;
+            if (MatImagen[NX, NY]==1)
+            {
+                if (Min_Distancia(IND[sel].Distancia,BuscarDistancia(NX,NY)))
+                {
+                    IND[sel].Distancia = BuscarDistancia(NX, NY);
+                    IND[sel].X = NX;
+                    IND[sel].Y = NY;
+                    IND[sel].GenotipoX = Binarizar(NX, IND[sel].GenotipoX.Length);
+                    IND[sel].GenotipoY = Binarizar(NY, IND[sel].GenotipoY.Length);
+                    IND[sel].Validez = 1;
+                }
+            }
+            IND[sel].Proceso = true;
         }
 
         //Metodo para el proceso de mutuacion
@@ -180,9 +194,18 @@ namespace IdentificaciónInteligente.Clases
                 }
                 Bin = BinToDec(Hijo[0] + "" + Hijo[1] + "" + Hijo[2] + "" + Hijo[3] + "" + Hijo[4] + "" + Hijo[5] + "" + Hijo[6]);
                 cant = 0;
-            } while (Bin > 100);
+            } while (Bin >= 10);
 
             return Bin;
+        }
+        
+        public bool Min_Distancia(double i1,double i2)
+        {
+            if (i1>i2)
+            {
+                return true;
+            }
+            return false;
         }
 
         //Metodo para implementacion de la formula para hallar la distancia
@@ -191,6 +214,11 @@ namespace IdentificaciónInteligente.Clases
             return Math.Round(Math.Pow((Math.Pow((i1.X - i2.X), 2) + Math.Pow((i1.Y - i2.Y), 2)), 0.5), 2);
         }
 
+        //Metodo para implementacion de la formula para hallar la distancia
+        public double Distancia(int x, int y, Individuo i2)
+        {
+            return Math.Round(Math.Pow((Math.Pow((x - i2.X), 2) + Math.Pow((y - i2.Y), 2)), 0.5), 2);
+        }
 
         //Metodo para resetiar los procesos de los individuos
         public void ResetiarIndividuo()

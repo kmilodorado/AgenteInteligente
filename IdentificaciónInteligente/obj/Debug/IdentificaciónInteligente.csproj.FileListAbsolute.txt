@@ -31,3 +31,14 @@ C:\Users\RQSOFT\Desktop\Identificacion_Inteligente_De_Objetos-master\Identificac
 C:\Users\RQSOFT\Desktop\Identificacion_Inteligente_De_Objetos-master\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.Properties.Resources.resources
 C:\Users\RQSOFT\Desktop\Identificacion_Inteligente_De_Objetos-master\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.Pruebas.resources
 C:\Users\RQSOFT\Desktop\Identificacion_Inteligente_De_Objetos-master\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.csproj.GenerateResource.Cache
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\bin\Debug\IdentificaciónInteligente.exe.config
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.csprojResolveAssemblyReference.cache
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.Form1.resources
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.Form2.resources
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.Properties.Resources.resources
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.Pruebas.resources
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.csproj.GenerateResource.Cache
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\bin\Debug\IdentificaciónInteligente.exe
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\bin\Debug\IdentificaciónInteligente.pdb
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.exe
+C:\Users\KDORADO\Desktop\AgenteInteligente\IdentificaciónInteligente\obj\Debug\IdentificaciónInteligente.pdb
